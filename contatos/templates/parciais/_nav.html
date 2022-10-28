@@ -1,0 +1,39 @@
+{% load static %}
+
+  <!-- Navigation -->
+<nav class="navbar navbar-light bg-light justify-content-between" >
+  <a class="navbar-brand" href="{%url 'login'%}">Agenda</a>
+{%if 'accounts' not in request.path%}
+
+  <div class="dropdown show"  style="margin-left: auto; margin-right: 20px; color: blue"  >
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Opções
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="{%url 'login'%}">Entrar</a>
+    <a class="dropdown-item" href="{%url 'register'%}">Registrar</a>
+    <a class="dropdown-item" href="{%url 'logout'%}">Sair</a>
+
+  </div>
+</div>
+  <form class="form-inline" method="get" action="{% url 'busca' %}">
+    <input class="form-control mr-sm-2" type="search"
+           placeholder="Procurar" value="{{ request.GET.termo }}"
+           id="search-input" name="termo"
+           aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Procurar</button>
+  </form>
+
+  {%endif%}
+
+  {%block conteudo%} {%endblock%}
+</nav>
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="{%url 'index'%}">Agenda</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>-->
